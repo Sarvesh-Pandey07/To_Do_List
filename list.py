@@ -43,6 +43,28 @@ def view_task(tasks_list) :
 
     print("---" * 30)
 
+
+def delete_task(tasks_list) :
+    view_task(tasks_list) 
+
+    if len(tasks_list) == 0 :
+        return
+
+    try :
+         task_num = int(input("Enter the number of the task to delete : "))
+
+         if 1 <= task_num <= len(tasks_list) :
+
+             removed_task = tasks_list.pop(task_num - 1 )
+
+             save_tasks(tasks_list)
+             print(f" \n Deleted : '{removed_task['name']}' ")
+         else :
+             print(f" \n Invalid task number . Please try again.")    
+
+    except ValueError :
+        print(" \n Error : Please enter a valid number , not text. ")       
+
       # Controle Flow----
 
 def main() :
@@ -53,15 +75,18 @@ def main() :
         while True :
           print("\n 1. Add a Task . ") 
           print("\n 2. View Tasks . ") 
-          print("\n 3. Quite . ")
+          print("\n 3. Delete a Tasks . ")
+          print("\n 4. QUit . ")
 
-          choice = input("Choose an option ( 1 / 2 / 3 ) : ")
+          choice = input("Choose an option ( 1 / 2 / 3 / 4  ) : ")
 
           if choice == "1" :
               add_task(my_tasks)
           elif choice == "2" :
               view_task(my_tasks)
           elif choice == "3" :
+              delete_task(my_tasks)    
+          elif choice == "4" :
               print("Good Bye ")
               break        # this stop the loop 
           else :

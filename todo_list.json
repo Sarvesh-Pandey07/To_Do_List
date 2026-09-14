@@ -1,26 +1,14 @@
 [
-     {
-          "name": "Build a To Do List App . ",
-          "status": "pending"
-     },
-     {
-          "name": "Understan what is json .",
-          "status": "pending"
-     },
-     {
-          "name": "1",
-          "status": "pending"
-     },
-     {
-          "name": "Making it correct so that it could arrange in assending order",
-          "status": "pending"
-     },
-     {
-          "name": "Build a TO DO APP",
-          "status": "pending"
-     },
-     {
-          "name": "adding dlt option to my programm",
-          "status": "pending"
-     }
+   {
+      "name": "Build a To Do List App . ",
+      "status": "pending"
+   },
+   {
+      "name": "Build a TO DO APP",
+      "status": "pending"
+   },
+   {
+      "name": "adding dlt option to my programm",
+      "status": "pending"
+   }
 ]
