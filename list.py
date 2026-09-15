@@ -65,6 +65,32 @@ def delete_task(tasks_list) :
     except ValueError :
         print(" \n Error : Please enter a valid number , not text. ")       
 
+def complete_task(tasks_list) :
+
+    view_task(tasks_list)
+
+    if len(tasks_list) == 0 :
+        return
+
+    try :
+        task_num = int(input("Enter the number of the task to  mark as complete : "))
+
+        if 1 <= task_num <= len(tasks_list) :
+
+            target_index = task_num - 1 
+            tasks_list[target_index]["status"] = "Done"
+
+            save_tasks(tasks_list)
+            print(f" \n Succes! '{tasks_list[target_index]['name']} marked as Done . ")
+
+        else :
+            print("Enter a valid Task Number . ")   
+    
+
+    except ValueError :
+        print(" \n Error : Please enter a valid number , not text. ")
+
+
       # Controle Flow----
 
 def main() :
@@ -76,17 +102,21 @@ def main() :
           print("\n 1. Add a Task . ") 
           print("\n 2. View Tasks . ") 
           print("\n 3. Delete a Tasks . ")
-          print("\n 4. QUit . ")
+          print("\n 4. Completed Task . ")
+          print("\n 5. Quit . ")
 
-          choice = input("Choose an option ( 1 / 2 / 3 / 4  ) : ")
+
+          choice = input(" \n Choose an option ( 1 / 2 / 3 / 4 / 5 ) : ")
 
           if choice == "1" :
               add_task(my_tasks)
           elif choice == "2" :
               view_task(my_tasks)
           elif choice == "3" :
-              delete_task(my_tasks)    
+              delete_task(my_tasks) 
           elif choice == "4" :
+              complete_task(my_tasks)       
+          elif choice == "5" :
               print("Good Bye ")
               break        # this stop the loop 
           else :
