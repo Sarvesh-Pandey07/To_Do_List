@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Manager</title>
+    <!-- Linking the external CSS file via Flask -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <h1>My To-Do List</h1>
+            <p>Stay organized and get things done</p>
+        </header>
+
+        <!-- Form to Add a Task -->
+        <form action="{{ url_for('add_task') }}" method="POST" class="task-form">
+            <input 
+                type="text" 
+                name="task_name" 
+                placeholder="What do you need to do?" 
+                class="task-input" 
+                autocomplete="off" 
+                required
+            >
+            <button type="submit" class="btn-add">Add</button>
+        </form>
+
+        <!-- Tasks List -->
+        <ul class="task-list">
+            {% for task in tasks %}
+                <li class="task-item {% if task.status == 'Done' %}completed{% endif %}">
+                    <div class="task-content">
+                        <span class="task-text">{{ task.name }}</span>
+                        {% if task.status == 'Done' %}
+                            <span class="badge done-badge">Done</span>
+                        {% else %}
+                            <span class="badge">Pending</span>
+                        {% endif %}
+                    </div>
+
+                    <div class="task-actions">
+                        {% if task.status != 'Done' %}
+                        <form action="{{ url_for('complete_task', index=loop.index0) }}" method="POST" style="margin: 0;">
+                            <button type="submit" class="btn-action btn-done">Complete</button>
+                        </form>
+                        {% endif %}
+
+                        <form action="{{ url_for('delete_task', index=loop.index0) }}" method="POST" style="margin: 0;">
+                            <button type="submit" class="btn-action btn-delete">Delete</button>
+                        </form>
+                    </div>
+                </li>
+            {% else %}
+                <div class="empty-state">
+                    No tasks found. Add a task above to get started!
+                </div>
+            {% endfor %}
+        </ul>
+    </div>
+
+</body>
+</html>
