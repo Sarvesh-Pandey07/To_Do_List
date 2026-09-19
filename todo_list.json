@@ -1,1 +1,10 @@
-[]
+[
+    {
+        "name": "I have to run this to do list web app which is created by me (SARVESH MANI PANDEY).",
+        "status": "Done"
+    },
+    {
+        "name": "Now next i have to add mysql database with my webapp.",
+        "status": "pending"
+    }
+]
